@@ -1,0 +1,34 @@
+party Customer;
+
+policy VendingMachine = 0x2ec6dcb5d0e5309bb6e3f05a6c0f44dbba163affb8fed92b5d72dd2d;
+
+asset COIN = 0x2ec6dcb5d0e5309bb6e3f05a6c0f44dbba163affb8fed92b5d72dd2d."COIN";
+
+tx claim_tokens(
+    pin: Bytes,
+) {
+    input gas {
+        from: Customer,
+        min_amount: fees,
+    }
+
+    collateral {
+        from: Customer,
+        min_amount: fees,
+    }
+
+    mint {
+        amount: COIN(1),
+        redeemer: pin,
+    }
+
+    output {
+        to: Customer,
+        amount: gas - fees + COIN(1),
+    }
+
+    cardano::plutus_witness {
+       version: 3,
+       script: 0x587801010029800aba2aba1aab9eaab9dab9a4888896600264646644b30013370e900018031baa00289919b8f37906eb8c02401122011c4f43be03892183d6ea41480f616be43b58937aad2c7511e71be9f80d00375c6010600e6ea800a2941005180318038009803001180300098019baa0068a4d1365640041,
+    }
+}

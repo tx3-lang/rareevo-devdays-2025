@@ -1,0 +1,7 @@
+[[utxos]]
+address = "@alice"
+value = 500000000
+
+[[utxos]]
+address = "@bob"
+value = 500000000

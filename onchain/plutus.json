@@ -1,0 +1,40 @@
+{
+  "preamble": {
+    "title": "ghosty/rare",
+    "description": "Aiken contracts for project 'ghosty/rare'",
+    "version": "0.0.0",
+    "plutusVersion": "v3",
+    "compiler": {
+      "name": "Aiken",
+      "version": "v1.1.16+23061c0"
+    },
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "pincode.vending_machine.mint",
+      "redeemer": {
+        "title": "redeemer",
+        "schema": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "compiledCode": "587801010029800aba2aba1aab9eaab9dab9a4888896600264646644b30013370e900018031baa00289919b8f37906eb8c02401122011c4f43be03892183d6ea41480f616be43b58937aad2c7511e71be9f80d00375c6010600e6ea800a2941005180318038009803001180300098019baa0068a4d1365640041",
+      "hash": "2ec6dcb5d0e5309bb6e3f05a6c0f44dbba163affb8fed92b5d72dd2d"
+    },
+    {
+      "title": "pincode.vending_machine.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "compiledCode": "587801010029800aba2aba1aab9eaab9dab9a4888896600264646644b30013370e900018031baa00289919b8f37906eb8c02401122011c4f43be03892183d6ea41480f616be43b58937aad2c7511e71be9f80d00375c6010600e6ea800a2941005180318038009803001180300098019baa0068a4d1365640041",
+      "hash": "2ec6dcb5d0e5309bb6e3f05a6c0f44dbba163affb8fed92b5d72dd2d"
+    }
+  ],
+  "definitions": {
+    "Data": {
+      "title": "Data",
+      "description": "Any Plutus data."
+    }
+  }
+}
