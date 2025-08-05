@@ -1,0 +1,11 @@
+
+// commonly ignore stuff for NodeJS
+node_modules
+package-lock.json
+dist
+
+// stuff we ignore just for the purpose of this demo to showcase how the offchain code is generated automatically
+protocol.ts
+tsconfig.json
+package.json
+

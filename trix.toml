@@ -22,7 +22,8 @@ chain = "CardanoMainnet"
 
 [[bindings]]
 plugin = "typescript"
-output_dir = "./gen/typescript"
+output_dir = "./offchain"
+options = { standalone = true }
 
 [[wallets]]
 name = "alice"
