@@ -8,15 +8,10 @@ function App() {
   const [address, setAddress] = useState("");
   const [pinCode, setPinCode] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<{ cbor: string } | null>(null);
+  const [error, setError] = useState<any>(null);
+  const [success, setSuccess] = useState<any>(null);
 
   const handleClaimTokens = async () => {
-    if (!address.trim() || !pinCode.trim()) {
-      setError("Please enter both address and pin code");
-      return;
-    }
-
     setIsLoading(true);
     setError(null);
     setSuccess(null);
@@ -30,16 +25,9 @@ function App() {
         pin: pinBytes,
       });
 
-      console.log("Claim tokens result:", result);
-
-      setSuccess({ cbor: result.tx });
+      setSuccess(result);
     } catch (error) {
-      console.error("Error claiming tokens:", error);
-      setError(
-        error instanceof Error
-          ? error.message
-          : "Error claiming tokens. Please try again."
-      );
+      setError(error);
     } finally {
       setIsLoading(false);
     }
@@ -55,62 +43,47 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+
       <h1>Token Claim Form</h1>
-      <div className="card">
-        {error && (
-          <div className="error-box">
-            <strong>Error:</strong> {error}
-          </div>
-        )}
 
-        {success && (
-          <div className="success-box">
-            <strong>Success!</strong>
-            <div className="cbor-data">
-              <strong>CBOR:</strong> {success.cbor}
-            </div>
-          </div>
-        )}
-
-        <div className="form-group">
-          <label htmlFor="address" className="form-label">
-            Address:
-          </label>
+      <form>
+        <section>
+          <label>Customer (bech32 address):</label>
           <input
-            id="address"
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             placeholder="Enter your address"
-            className="form-input"
           />
-        </div>
+        </section>
 
-        <div className="form-group">
-          <label htmlFor="pinCode" className="form-label">
-            Pin Code:
-          </label>
+        <section>
+          <label>Pin Code:</label>
           <input
-            id="pinCode"
-            type="password"
+            type="text"
             value={pinCode}
             onChange={(e) => setPinCode(e.target.value)}
             placeholder="Enter your pin code"
-            className="form-input"
           />
-        </div>
+        </section>
 
-        <button
-          onClick={handleClaimTokens}
-          disabled={isLoading}
-          className="claim-button"
-        >
-          {isLoading ? "Claiming..." : "Claim Tokens"}
+        <button onClick={handleClaimTokens} disabled={isLoading}>
+          Claim Tokens
         </button>
-      </div>
-      <p className="read-the-docs">
-        Enter your address and pin code to claim your tokens
-      </p>
+
+        {error && (
+          <section className="error-box">
+            <strong>Error:</strong> {error?.message}
+          </section>
+        )}
+
+        {success && (
+          <section className="success-box">
+            <h5>Unsigned Tx</h5>
+            <code>{success.tx}</code>
+          </section>
+        )}
+      </form>
     </>
   );
 }

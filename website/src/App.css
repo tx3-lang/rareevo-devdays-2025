@@ -42,16 +42,20 @@
 }
 
 /* Form styles */
-.form-group {
-  margin-bottom: 1rem;
+section {
+  margin: 1rem;
 }
 
-.form-label {
+form {
+  max-width: 500px;
+}
+
+form label {
   display: block;
   margin-bottom: 0.5rem;
 }
 
-.form-input {
+form input {
   width: 100%;
   padding: 0.5rem;
   font-size: 1rem;
@@ -59,7 +63,7 @@
   border-radius: 4px;
 }
 
-.claim-button {
+form button {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   background-color: #646cff;
@@ -101,7 +105,8 @@
   text-align: left;
 }
 
-.cbor-data {
+code {
+  display: block;
   margin-top: 0.5rem;
   padding: 0.5rem;
   background-color: #f8f8f8;
