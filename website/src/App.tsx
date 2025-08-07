@@ -2,7 +2,6 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { protocol } from "rare";
 
 function App() {
   const [address, setAddress] = useState("");
@@ -17,13 +16,9 @@ function App() {
     setSuccess(null);
 
     try {
-      // Convert pin code string to Uint8Array
-      const pinBytes = new TextEncoder().encode(pinCode);
-
-      const result = await protocol.claimTokensTx({
-        customer: address,
-        pin: pinBytes,
-      });
+      const result = {
+        // "TODO: Implement claim tokens",
+      };
 
       setSuccess(result);
     } catch (error) {
